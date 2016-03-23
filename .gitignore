@@ -1,0 +1,6 @@
+node_modules
+app/dist
+app/src/js/*
+!app/src/js/entry.js
+app/src/scss/*
+!app/src/scss/entry.scss
