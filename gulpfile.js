@@ -40,6 +40,24 @@ gulp.task('rev', function() {
 
 });
 
+gulp.task('browserify-rev', function() {
+  runSequence('browserify','copy-rev');
+});
+
+gulp.task('sass-rev', function() {
+  runSequence('sass','copy-rev');
+});
+
+gulp.task('copy-rev', function() {
+  runSequence('copy','rev');
+});
+
+gulp.task('watch', ['default'], function() {
+  gulp.watch('app/src/**/*.js', ['browserify-rev']);
+  gulp.watch('app/src/**/*.scss', ['sass-rev']);
+  gulp.watch('app/src/**/*.html', ['copy-rev']);
+});
+
 gulp.task('default', function( callback ) {
   runSequence('clean',
               ['browserify', 'sass', 'copy'],
